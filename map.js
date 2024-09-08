@@ -1,4 +1,4 @@
-let pictures = new Array("https://lisanavi.github.io/map/img/2024_1F.png","https://lisanavi.github.io/map/img/2024_2F.png","https://lisanavi.github.io/map/img/2024_3F.png","https://lisanavi.github.io/map/img/2024_4F.png");
+let pictures = new Array("img/2024_1F.png","img/2024_2F.png","img/2024_3F.png","img/2024_4F.png");
 let img_height = 1350;
 let img_width = 1651;
 let zoomlevel = 1;
