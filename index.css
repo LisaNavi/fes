@@ -12,9 +12,10 @@ body,p,ul,td,th{
 .title{
 	text-align: center;
 	display: flex;
+	position: fixed;
 	width: 100vw;
 	height: 3rem;
-	z-index:1;
+	z-index:20;
 	font-size: 2rem;
 	font-weight: bold;
 	box-shadow: 0px 10px 15px black; 
@@ -31,16 +32,20 @@ body,p,ul,td,th{
 }
 /* menu */
 #menu {
+	top: 3rem;
 	height: 97rem;
 	width: 100vw;
 	position: fixed;
 	display: flex;
 	flex-direction: column;
 	text-align: center;
+	display: none;
 	z-index:10;
 	white-space: 10;
 	background: linear-gradient(rgb(207, 207, 207), white);
-	visibility: hidden;
+	animation-name: left_slidein;
+	animation-duration: 0.3s;
+	animation-timing-function: cubic-bezier(0,0,0,1);
 }
 #menu button {
 	margin: 10px auto;
@@ -60,7 +65,7 @@ body,p,ul,td,th{
 #floorid{
 	background: #ff9900;
 	border-radius: 10px;
-	width: 3rem;
+	width: 5rem;
 	padding: 10px 10px;
 	margin: 0 auto;
 }
@@ -71,7 +76,7 @@ div#left-side {
 	background: rgba(0, 0, 0, 0.75);
 	padding: 5 5 5 5;
 	position:fixed;
-	bottom: 0rem; left:0;
+	bottom: 1rem; left:1rem;
 	display: flex;
 	flex-flow: column;
 	justify-content: left;
@@ -83,7 +88,7 @@ div#right-side {
 	padding: 5px 5px 5px 5px;
 	background: rgba(0, 0, 0, 0.75);
 	position:fixed;
-	bottom: 0; right:0;
+	bottom: 1rem; right:1rem;
 	display: flex;
 	flex-flow: column;
 	justify-content: right;
@@ -293,5 +298,16 @@ button:active {
 	div#information{
 		width: 90%;
 		margin: 40% 5%;
+	}
+}
+
+/* Animations */
+
+@keyframes left_slidein {
+	from {
+		left: 100vw;
+	} 
+	to {
+		left: 0vw;
 	}
 }

@@ -90,10 +90,10 @@ function ResizeFrame() {
 
 function Menu_Toggle() {
     let menu_panel = document.getElementById("menu");
-    if (menu_panel.style.visibility == "hidden") {
-        menu_panel.style.visibility = "visible";
+    if (menu_panel.style.display == "none") {
+        menu_panel.style.display = "flex";
     } else {
-        menu_panel.style.visibility = "hidden";
+        menu_panel.style.display = "none";
     }
 }
 
