@@ -1,4 +1,4 @@
-let pictures = new Array("img/2024_1F.png","img/2024_2F.png","img/2024_3F.png","img/2024_4F.png");
+let pictures = new Array("https://lisanavi.github.io/map/img/2024_1F.png","https://lisanavi.github.io/map/img/2024_2F.png","https://lisanavi.github.io/map/img/2024_3F.png","https://lisanavi.github.io/map/img/2024_4F.png");
 let img_height = 1350;
 let img_width = 1651;
 let zoomlevel = 1;
@@ -39,6 +39,7 @@ function flchange(num)
 {
     floornum = num;
     img.src=pictures[floornum];
+    
 
     // ハイライトと同じ階になったら表示
     if (room != "" && room[0] == floornum+1)
@@ -124,4 +125,41 @@ function getImages(){
         var img = document.createElement('img');
         img.src = pictures[i];
     }
+}
+
+//ピンチ機能
+const touchContainer = document.getElementById('display');
+const image = document.getElementById('container');
+let touchScale = 1;
+let initialDistance = 0;
+let initialScale = 1;
+
+touchContainer.addEventListener('touchstart', function (event) {
+    if (event.touches.length === 2) {
+        initialDistance = getDistance(event.touches[0], event.touches[1]);
+        initialScale = touchScale;
+        event.preventDefault();
+    }
+});
+
+touchContainer.addEventListener('touchmove', function (event) {
+    if (event.touches.length === 2) {
+    const distance = getDistance(event.touches[0], event.touches[1]);
+    const scaleChange = distance / initialDistance;
+
+    if (initialScale * scaleChange >= 0.2 && initialScale * scaleChange <= 5.0) { // 拡大縮小制限
+        touchScale = initialScale * scaleChange;
+        // image.style.transform = `scale(${touchScale})`;
+        image.style.scale = touchScale;
+
+        event.preventDefault();
+        }
+    }
+});
+
+function getDistance(touch1, touch2) {
+    const x = touch1.pageX - touch2.pageX;
+    const y = touch1.pageY - touch2.pageY;
+
+    return Math.sqrt(x * x + y * y);
 }
