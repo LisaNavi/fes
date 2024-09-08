@@ -17,11 +17,12 @@
   </head>
 
   
-  <body>
+  <body style="overflow-y: hidden;">
     <link rel="stylesheet" type="text/css" href="index.css" />
-    <div id="title">
-      <h3 style="line-height:0; margin-top: 1rem; margin-bottom: 1vh;">LiSA Navi</h3>
-      <h3 id="floorid">1F</h3>
+    <div class="title">
+      <div style="padding: 10px 10px;">LiSA Navi</div>
+      <div id="floorid">1F</div>
+      <button style="font-weight: bold; font-size: 2rem;">≡ (仮)</button>
     </div>
 
     <iframe id="map" src="map.html" width="1000" height="1000" frameborder=0></iframe>
@@ -40,8 +41,6 @@
       <input id="input" type="number" min="100" max="431" placeholder="教室番号" style="text-align: center; width: 4.2rem;"></input>
       <a href="javascript:search(document.getElementById('input').value)" class="btn_05">🔍</a>
       <a href="javascript:info(document.getElementById('input').value)" id="info-btn" class="btn_05">Info</a>
-      <br>
-      <a href="javascript:cls_open()" class="btn_05">週程表</a>
     </div>
     <div id="information">
       <div id="info-text">
