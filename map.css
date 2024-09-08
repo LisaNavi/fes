@@ -18,14 +18,6 @@ div#container{
     visibility: hidden;
     z-index: 1;
 }
-#cls-highlight{
-    width: 80px;
-    height: 80px;
-    background: rgb(125, 255, 127);
-    position: absolute;
-    left: 0px; top: 0px;
-    z-index: 1;
-}
 img#image{
     position:absolute;
     left: 0%; top: 0%;
