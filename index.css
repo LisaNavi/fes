@@ -9,25 +9,42 @@ body{
 	font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
 }
 
-div#title{
+/* Header (上部) */
+.title{
 	text-align: center;
-	width: 99.7vw;
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
 	z-index:1;
 	font-size: 2rem;
-	height: 7.5vh;
+	padding: 1vh 0px 0.1vh 0px;
+
 }
 
-#footer{
-	width: 100vw;
-	height: 3rem;
-	padding-top: 1rem;
-	background: rgba(0,0,0, 0.75);
-	position:fixed;
-	bottom: 0rem; left:0%;
-	justify-content:center;
-	z-index:5;
+.link{
+	color:#6699ff;
+	font-weight: bold;
+	font-size: 1rem;
+	margin-right: 0.5rem;
+	margin-left: 0.5rem;
 }
 
+/* map */
+#map{
+	height: 90vh;
+	width: 99.9vw;
+	border-radius: 0;
+	z-index: 0;
+	user-select: none;
+}
+
+h3#floorid{
+	background: #ff9900;
+	border-radius: 10px;
+	margin: 0;
+}
+
+/* UI */
 div#left-side {
 	height: 12rem;
 	background: rgba(0, 0, 0, 0.75);
@@ -42,7 +59,7 @@ div#left-side {
 
 div#right-side {
 	height:12rem;
-	padding: 5 5 5 5;
+	padding: 5px 5px 5px 5px;
 	background: rgba(0, 0, 0, 0.75);
 	position:fixed;
 	bottom: 0; right:0;
@@ -52,10 +69,115 @@ div#right-side {
 	z-index:5;
 }
 
-left{
-	text-align: left;
+#input{
+	width:75px; height: 2rem;
+	border: 2px solid #6699ff;
 }
 
+div#zooms{
+	display: none; /* スマホ専用表示のためデフォルトは非表示 */
+}
+
+/* 「検索」「週程表」ボタン */
+a.btn_05 {
+	display: inline;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+	width: 45px;
+	margin: auto;
+	padding: 0.2rem 0.3rem;
+	font-weight: bold;
+	border: 2px solid #9f9f9f;
+	color: #9f9f9f;
+	user-select: none;
+	transition: 0.3s;
+}
+a.btn_05:hover {
+	color: #fff;
+	background: #9f9f9f;
+}
+
+/* 1F Orange*/
+a.btn_01 {
+	display: inline;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+	width: 20px;
+	margin: auto;
+	padding: 0.5rem 0.7rem;
+	font-weight: bold;
+	border: 2px solid #ff9900;
+	color: #ff9900;
+	user-select: none;
+	transition: 0.3s;
+}
+a.btn_01:hover {
+	color: #fff;
+	background: #ff9900;
+}
+
+/* 2F Blue*/
+a.btn_02 {
+	display: inline;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+	width: 20px;
+	margin: auto;
+	padding: 0.5rem 0.7rem;
+	font-weight: bold;
+	border: 2px solid #6699ff;
+	color: #6699ff;
+	user-select: none;
+	transition: 0.3s;
+}
+a.btn_02:hover {
+	color: #fff;
+	background: #6699ff;
+}
+
+/* 3F Green*/
+a.btn_03 {
+	display: inline;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+	width: 20px;
+	margin: auto;
+	padding: 0.5rem 0.7rem;
+	font-weight: bold;
+	border: 2px solid #66cc33;
+	color: #66cc33;
+	user-select: none;
+	transition: 0.3s;
+}
+a.btn_03:hover {
+	color: #fff;
+	background: #66cc33;
+}
+/* 4F Red*/
+a.btn_04 {
+	display: inline;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+	width: 20px;
+	margin: auto;
+	padding: 0.5rem 0.7rem;
+	font-weight: bold;
+	border: 2px solid #ff3300;
+	color: #ff3300;
+	user-select: none;
+	transition: 0.3s;
+}
+a.btn_04:hover {
+	color: #fff;
+	background: #ff3300;
+}
+
+/* Room Information */
 
 div#information{
 	width: 50vw;
@@ -69,6 +191,7 @@ div#information{
 	border-radius: 10px;
 	font-weight: bold;
 }
+
 div#info-text{
 	vertical-align: middle;
 	white-space: pre-line;
@@ -76,56 +199,87 @@ div#info-text{
 	margin-left: 3%;
 }
 
-
 #info-btn{
 	visibility: hidden;
 }
 
-h3#floorid{
-	background: #ff9900;
-	margin: -2;
-}
+/* Schedule (週程表) */
 
-.btn--gray,
-a.btn--gray {
-  color: #fff;
-  background-color: #d3d3d3;
-}
-.btn--gray:hover,
-a.btn--gray:hover {
-  color: #fff;
-  background: #f56500;
-}
-
-.link{
-	color:#6699ff;
+div#cls-table{
+	display: flex;
+	flex-direction: column;
+	justify-content: top;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	top: 0%; left:0%;
+	background: rgb(61, 61, 61, 0.9);
+	color:#fff;
+	position: fixed;
+	visibility: hidden;
+	z-index:11;
 	font-weight: bold;
-	font-size: 1rem;
-	margin-right: 0.5rem;
-	margin-left: 0.5rem;
+	text-align: center;
+	user-select: none;
 }
 
-#input{
-	width:75px; height: 2rem;
-	border: 2px solid #6699ff;
+table#cls-chart{
+	margin: 3% 0;
+	font-weight: bold;
+	align-items: center;
+	width: auto;
+	color:#fff;
 }
 
-#map{
-	padding-top: 1.5%;
-	height: 85vh;
-	width: 99.9vw;
-	border-radius: 0;
+/* 使い方説明 */
+
+div#tutorial{ 
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	top: 0%; left: 0%;
+	background: rgb(61, 61, 61, 0.9);
+	color:#fff;
+	position: fixed;
+	visibility: hidden;
+	z-index:11;
+	font-weight: bold;
+	text-align: center;
+	
 }
 
-div#zooms{
-	display: none;
+img#cls_tutorial{
+	height: 75vh;
+	object-fit: contain;
+	color:#fff;
 }
 
+.cls-buttons {
+	align-self: center;
+}
+
+/* 左寄せ専用タグ */
+left{
+	text-align: left;
+}
+
+/* 上記以外のボタン 「閉じる」など */
+button {
+	border: 0;
+	border-radius: 5px;
+	padding: 3px 10px;
+	user-select: none;
+}
+button:active {
+	background-color: rgb(170, 170, 170);
+}
 
 /* https://excellent.ne.jp/homepage/6562/より */
 
 @media screen and (max-width:480px) {
-
 	/*　画面サイズが480px以下の場合ここの記述が適用される = スマホ用表示*/
 	div#zooms{
 		display:flex;
@@ -146,97 +300,4 @@ div#zooms{
 		width: 90%;
 		margin: 40% 5%;
 	}
-}
-
-/* 1F Orange*/
-a.btn_01 {
-	display: inline;
-	text-align: center;
-	vertical-align: middle;
-	text-decoration: none;
-	width: 20px;
-	margin: auto;
-	padding: 0.5rem 0.7rem;
-	font-weight: bold;
-	border: 2px solid #ff9900;
-	color: #ff9900;
-	transition: 0.3s;
-}
-a.btn_01:hover {
-	color: #fff;
-	background: #ff9900;
-}
-
-/* 2F Blue*/
-a.btn_02 {
-	display: inline;
-	text-align: center;
-	vertical-align: middle;
-	text-decoration: none;
-	width: 20px;
-	margin: auto;
-	padding: 0.5rem 0.7rem;
-	font-weight: bold;
-	border: 2px solid #6699ff;
-	color: #6699ff;
-	transition: 0.3s;
-}
-a.btn_02:hover {
-	color: #fff;
-	background: #6699ff;
-}
-
-/* 3F Green*/
-a.btn_03 {
-	display: inline;
-	text-align: center;
-	vertical-align: middle;
-	text-decoration: none;
-	width: 20px;
-	margin: auto;
-	padding: 0.5rem 0.7rem;
-	font-weight: bold;
-	border: 2px solid #66cc33;
-	color: #66cc33;
-	transition: 0.3s;
-}
-a.btn_03:hover {
-	color: #fff;
-	background: #66cc33;
-}
-/* 4F Red*/
-a.btn_04 {
-	display: inline;
-	text-align: center;
-	vertical-align: middle;
-	text-decoration: none;
-	width: 20px;
-	margin: auto;
-	padding: 0.5rem 0.7rem;
-	font-weight: bold;
-	border: 2px solid #ff3300;
-	color: #ff3300;
-	transition: 0.3s;
-}
-a.btn_04:hover {
-	color: #fff;
-	background: #ff3300;
-}
-/* Search and Schedulechart */
-a.btn_05 {
-	display: inline;
-	text-align: center;
-	vertical-align: middle;
-	text-decoration: none;
-	width: 45px;
-	margin: auto;
-	padding: 0.2rem 0.3rem;
-	font-weight: bold;
-	border: 2px solid #9f9f9f;
-	color: #9f9f9f;
-	transition: 0.3s;
-}
-a.btn_05:hover {
-	color: #fff;
-	background: #9f9f9f;
 }
