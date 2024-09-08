@@ -22,11 +22,14 @@
     <div class="title">
       <div style="padding: 10px 10px;">LiSA Navi</div>
       <div id="floorid">1F</div>
-      <button style="font-weight: bold; font-size: 2rem;">≡ (仮)</button>
+      <button style="font-weight: bold; font-size: 2rem;" onclick="Menu_Toggle()">≡ (仮)</button>
     </div>
 
-    <div class="menu">
-      
+    <div id="menu">
+      <div style="height: 1rem;"></div>
+      <button onclick="Menu_Toggle()">←閉じる</button>
+      <button style="height:10rem; font-size: larger;" onclick="url('https://docs.google.com/forms/d/e/1FAIpQLSfvY96CIyt1S9YSQlqNMndoUyvr1QrgFMBg1-6q8fglPAxoOA/viewform')">！！使用感のアンケートをお願いします！！</button>
+      <button onclick="url('https://lisanavi.github.io/map/')">生徒用LiSA Navi</button>
     </div>
 
     <iframe id="map" src="map.html" width="1000" height="1000" frameborder=0></iframe>

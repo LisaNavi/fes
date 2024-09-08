@@ -58,6 +58,11 @@ function search(num){
     }
 }
 
+// URLボタン用
+function url(a) {
+    open(a, target="_blank");
+}
+
 function info(num) {
     var info_pane = document.getElementById("information");
     var desk = document.getElementById("desk");
@@ -83,6 +88,14 @@ function ResizeFrame() {
     frame.style.width = sitewidth;
 }
 
+function Menu_Toggle() {
+    let menu_panel = document.getElementById("menu");
+    if (menu_panel.style.visibility == "hidden") {
+        menu_panel.style.visibility = "visible";
+    } else {
+        menu_panel.style.visibility = "hidden";
+    }
+}
 
 window.onload = function() {
     ResizeFrame();

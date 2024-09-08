@@ -2,9 +2,6 @@
 body,p,ul,td,th{
     margin: 0;
     padding: 0;
-}
-
-body{
 	font-size: 15px;
 	font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
 }
@@ -33,13 +30,24 @@ body{
 	margin-left: 0.5rem;
 }
 /* menu */
-.menu {
+#menu {
 	height: 97rem;
 	width: 100vw;
 	position: fixed;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
 	z-index:10;
+	white-space: 10;
 	background: linear-gradient(rgb(207, 207, 207), white);
+	visibility: hidden;
 }
+#menu button {
+	margin: 10px auto;
+	width: 80vw;
+	height: auto;
+}
+
 /* map */
 #map{
 	height: 95vh;
