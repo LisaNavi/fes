@@ -284,10 +284,9 @@ div#info-text{
 	margin-left: 3%;
 }
 
-#info-btn{
-	visibility: hidden;
+#info-btn {
+	display:none;
 }
-
 
 /* 使い方説明 */
 
