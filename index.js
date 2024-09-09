@@ -59,8 +59,16 @@ function search(num){
 }
 
 // URLボタン用
-function url(a) {
-    open(a, target="_blank");
+function Url(a, needsAuth = false) {
+    if (needsAuth) {
+        open(a, target="_blank");
+    } else {
+        var res = prompt("学校メアド@_____.ed.jpの__を埋めてください");
+        console.log(res);
+        if (res == "gl.pen-kanagawa") {
+            open(a, target="_blank");
+        }
+    }
 }
 
 function info(num) {

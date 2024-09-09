@@ -6,8 +6,6 @@ body,p,ul,td,th{
 	font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
 }
 
-/* General */
-
 /* Header (上部) */
 .title{
 	text-align: center;
@@ -47,10 +45,68 @@ body,p,ul,td,th{
 	animation-duration: 0.3s;
 	animation-timing-function: cubic-bezier(0,0,0,1);
 }
-#menu button {
+#menu .spreadbtn {
 	margin: 10px auto;
 	width: 80vw;
 	height: auto;
+}
+
+#menu .booth {
+	background: linear-gradient(#aaa, #fff);
+	margin: 10px auto;
+	width: 90vw;
+	height: 75vh;
+	border-radius: 5px;
+	overflow-x: auto;
+	overflow-y: auto;
+}
+
+#menu .booth input {
+	width: 65vw;
+	margin: 10px auto;
+	height: 1.5rem;
+	font-size: 1rem;
+	text-align: center;
+}
+
+#menu .booth button {
+	width: 3rem;
+	margin: 10px auto;
+	height: 1.5rem;
+}
+
+#menu #booth-list {
+	display: flex;
+	flex-direction: column;
+}
+
+#booth-list div.booth-item {
+	background: #00000068;
+	color: #fff;
+	margin: 10px auto;
+	width: 75vw;
+	height: fit-content;
+	border-radius: 5px;
+	padding: 10px 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin: 10px auto;
+}
+div.booth-item .booth-img {
+	margin: auto;
+	width: 30vw;
+}
+div.booth-item .booth-text {
+	text-align: center;
+	vertical-align: middle;
+	line-height: 1.5rem;
+	margin: auto;
+}
+div.booth-item button {
+	height: 10rem;
+	width: 10rem;
+	margin: 10px auto;
 }
 
 /* map */
