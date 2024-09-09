@@ -84,7 +84,7 @@ div#left-side {
 }
 
 div#right-side {
-	height:8rem;
+	height:auto;
 	padding: 5px 5px 5px 5px;
 	background: rgba(0, 0, 0, 0.75);
 	position:fixed;
@@ -122,6 +122,9 @@ a.btn_05 {
 a.btn_05:hover {
 	color: #fff;
 	background: #9f9f9f;
+}
+a#info-btn {
+	display:none;
 }
 
 /* 1F Orange*/
