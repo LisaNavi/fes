@@ -54,7 +54,7 @@ body,p,ul,td,th{
 #menu .booth {
 	background: linear-gradient(#aaa, #fff);
 	margin: 10px auto;
-	width: 90vw;
+	width: 80vw;
 	height: 75vh;
 	border-radius: 5px;
 	overflow-x: auto;
@@ -89,13 +89,14 @@ body,p,ul,td,th{
 	border-radius: 5px;
 	padding: 10px 10px;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: space-between;
 	margin: 10px auto;
 }
 div.booth-item .booth-img {
 	margin: auto;
-	width: 30vw;
+	width: 20vw;
+	height: auto;
 }
 div.booth-item .booth-text {
 	text-align: center;

@@ -135,6 +135,7 @@ let initialDistance = 0;
 let initialScale = 1;
 
 touchContainer.addEventListener('touchstart', function (event) {
+    console.log(event.touches[0].pageX + " " + event.touches[0].pageY);
     if (event.touches.length === 2) {
         initialDistance = getDistance(event.touches[0], event.touches[1]);
         initialScale = touchScale;
