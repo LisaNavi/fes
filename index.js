@@ -4,8 +4,9 @@ let dis_number = document.getElementById("floorid");
 let panel = document.getElementById("information");
 let inputbox = document.getElementById("input");
 let schedulebox = document.getElementById("cls-table");
-let inputS = document.getElementById("input_start");
-let inputG = document.getElementById("input_goal");
+let route_panel = document.getElementById('route-panel')
+let inputS = document.getElementById("input-start");
+let inputG = document.getElementById("input-goal");
 
 // クッキーから読み込み
 let userdata = {};
@@ -60,12 +61,17 @@ function search(num){
     }
 }
 
-function open_route()
-{
-    var route_pane = document.getElementById("route_panel");
+function open_route(){
+    var route_pane = document.getElementById("route-panel");
     route_pane.style.visibility = "visible";
     
 }
+
+function close_route(){
+    var close_pane = document.getElementById("route-panel");
+    close_pane.style.visibility = "hidden";
+}
+
 
 // URLボタン用
 function Url(a, needsAuth = false) {
@@ -122,7 +128,6 @@ window.onresize = function() {
 }
 
 panel.addEventListener("click", function() {panel.style.visibility = "hidden";});
-
 
 //経路検索
 
