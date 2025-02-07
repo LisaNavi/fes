@@ -1,18 +1,20 @@
-<html></html>
+<html>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, minimum-scale=0.25, maximum-scale=1.6, user-scalable=yes">
     <link rel="stylesheet" type="text/css" href="map.css" />
   </head>
   <body>
-  <div id="display">
-    <div id="container">
-      <img id="image" src="img/2024_1F.png" alt="階層画像">
-      <div id="highlight" style="visibility: hidden;"></div>
-      <div id="cls-highlight" style="visibility: hidden;"></div>
+    <canvas id="canvas" width="1651" height="1350" style="background-color: rgb(0 0 0 / 0); z-index: 1;"></canvas>
+    <div id="display" style="margin-top: -1350px;">
+      <div id="container">
+        <img id="image" src="img/2024_1F.png" alt="階層画像">
+        <div id="highlight" style="visibility: hidden;"></div>
+        <div id="cls-highlight" style="visibility: hidden;"></div>
+      </div>
     </div>
-  </div>
+  <scrpit src="path.js"></scrpit>
   <script src="data.js"></script>
   <script src="map.js"></script>
-</body>
+  </body>
 </html>
