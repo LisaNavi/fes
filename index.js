@@ -162,16 +162,140 @@ function search_route(Snum, Gnum) {
                     alert("指定された部屋番号は登録されていません。");
                 }
                 else {
-                    var Sx = path[Snum][0];
-                    var Sy = path[Snum][1];
-                    var Gx = path[Gnum][0];
-                    var Gy = path[Gnum][1];
+                    var fl = "";
+                    var Sx = [];
+                    var Sy = [];
+                    var Gx = [];
+                    var Gy = [];
+                    Sx[0] = path[Snum][0];
+                    Sy[0] = path[Snum][1];
+                    Gx[0] = path[Gnum][0];
+                    Gy[0] = path[Gnum][1];
+                    for (let i = 0; i < 4; i++){
+                        if (100*(i+1) < Snum && Snum < 100*(i+2)){
+                            if(100*(i+1) < Gnum && Gnum < 100*(i+2)){
+                                //同じ階で移動するとき
+                                Sx[i] = Sx[0];
+                                Sy[i] = Sy[0];
+                                Gx[i] = Gx[0];
+                                Gy[i] = Gy[0];
+                                fl = i;
+                                for (j = 0; j < 4; j++){
+                                    if (i == j){
+                                        continue;
+                                    }
+                                    else{
+                                        Sx[j] = 330;
+                                        Gx[j] = 220;
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                        //異なる階で移動するとき
+                        //東棟から移動するとき
+                        else if(Sy == 181){
+                            if(Gy == Sy){
+                                if(Sx[0]){
+
+                                }
+                            }
+                            else if(Gy == 658){
+                                if(Sx < 366){
+                                }
+                                else{
+                                    if(Math.abs(1182 - Sx) + 477 + Math.abs(1182 -Gx) < Math.abs(Sx - 366) + 477 + Math.abs(Gx - 366)){
+
+                                    }
+                                    else{
+
+                                    }
+                                }
+                            }
+                            //117,118へ移動するとき
+                            else if(Gx == 366){
+
+                            }
+                            //事務室へ移動するとき
+                            else if(Gy == 300){
+
+                            }
+                            //校長室側へ移動するとき
+                            else if(Gy == 256){
+                                if(Math.abs(938 - Sx) < Math.abs(1182 - Sx)){
+
+                                }
+                                else{
+
+                                }
+                            }
+                        }
+                        //西棟から移動するとき
+                        else if(Sy == 658){
+                            if(Gy == Sy){
+
+                            }
+                            else if(Gy == 181){
+                                if(Sx < 366){
+
+                                }
+                                else if(1182 < Gx){
+
+                                }
+                                else{
+                                    if(Math.abs(1182 - Sx) + 477 + Math.abs(1182 -Gx) < Math.abs(Sx - 366) + 477 + Math.abs(Gx - 366)){
+
+                                    }
+                                    else{
+
+                                    }
+                                }
+                            }
+                            //117,118へ移動するとき
+                            else if(Gx == 366){
+
+                            }
+                            //事務室へ移動するとき
+                            else if(Gy == 300){
+
+                            }
+                            //校長室側へ移動するとき
+                            else if(Gy == 256){
+                                if(Math.abs(366 - Sx) + 572 + Math.abs(Gx - 938) < Math.abs(1182 - Sx) + Math.abs(1182 - Gx)){
+
+                                }
+                                else{
+
+                                }
+                            }
+                        }
+                        //117,118から移動するとき
+                        else if(Sx == 366){
+                            if(Gy == 300){
+
+                            }
+                            else if(Gy != 256){
+
+                            }
+                            else{
+
+                            }
+                        }
+                        //事務室から移動するとき
+                        else if(Sy == 300){
+
+                        }
+                        //校長室側から移動するとき
+                        else if(Sy == 256){
+
+                        }
+                    }
                     map.contentWindow.room = Snum;
                     map.contentWindow.flchange(Snum-1);
-                    map.contentWindow.showup(Snum);
+                    map.contentWindow.showupS(Snum);
                     map.contentWindow.room = Gnum;
                     map.contentWindow.flchange(Gnum-1);
-                    map.contentWindow.showup(Gnum);
+                    map.contentWindow.showupG(Gnum);
                     dis_number.textContent = Snum[0] + "F";
                     dis_number.style.background=colors[Snum[0] - 1];
                     dis_number.textContent = Gnum[0] + "F";
@@ -181,6 +305,7 @@ function search_route(Snum, Gnum) {
         }
     }
     
-    map.contentWindow.draw(Sx,Sy,Gx,Gy);
+    map.contentWindow.draw(Sx[fl],Sy[fl],Gx[fl],Gy[fl]);
+    console.log(Sx[fl],Sy[fl],Gx[fl],Gy[fl]);
 }
 

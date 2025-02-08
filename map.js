@@ -5,11 +5,12 @@ let zoomlevel = 1;
 let img = document.getElementById("image");
 let room = "";
 let dayroom = "";
+let flroute = "";
 let floornum = 1;
 let container = document.getElementById("container");
 let h1 = document.getElementById("highlight");
 let h2 = document.getElementById("cls-highlight");
-var canvas = document.getElementById('canvas');
+var canvas = document.getElementById('canvas1');
 var fig = canvas.getContext("2d");
 
 onload = function() {
@@ -87,6 +88,27 @@ function flchange(num)
         h2.classList.remove("show");
         h2.style.visibility = "hidden";
     }
+
+    //その階での経路を表示
+    if (flroute != "" && flroute[0] == floornum+1)
+        {
+            if (h1.style.visibility == "hidden") {
+                // 大きさを計算して座標配置
+                h1.style.width = ( data[room][2] - data[room][0] ) + "px";
+                h1.style.height = ( data[room][3] - data[room][1] ) + "px";
+                h1.style.left = data[room][0] + "px";
+                h1.style.top = data[room][1] + "px";
+                h1.style.visibility = "visible";
+                h1.classList.add("show");
+                h1.style.zIndex = 1;
+            }
+        }
+        // 別の階になったら非表示
+        else
+        {
+            h1.classList.remove("show");
+            h1.style.visibility = "hidden";
+        }
 }
 
 function clschange(num)
@@ -107,6 +129,38 @@ function clschange(num)
 
 
 //経路検索
+function showupS(rn)
+{
+    room = rn;
+    img.src = pictures[room[0] - 1]
+
+    // lefttop y - rightbottom y = height
+    
+    h1.style.width = ( data[room][2] - data[room][0] ) + "px";
+    h1.style.height = ( data[room][3] - data[room][1] ) + "px";
+    h1.style.left = data[room][0] + "px";
+    h1.style.top = data[room][1] + "px";
+    h1.style.visibility = "visible";
+    h1.classList.add("show");
+    h1.style.zIndex = 1;
+}
+
+function showupG(rn)
+{
+    room = rn;
+    img.src = pictures[room[0] - 1]
+
+    // lefttop y - rightbottom y = height
+    
+    h1.style.width = ( data[room][2] - data[room][0] ) + "px";
+    h1.style.height = ( data[room][3] - data[room][1] ) + "px";
+    h1.style.left = data[room][0] + "px";
+    h1.style.top = data[room][1] + "px";
+    h1.style.visibility = "visible";
+    h1.classList.add("show");
+    h1.style.zIndex = 1;
+}
+
 function line(Sx,Sy,Gx,Gy){
     fig.beginPath();
     fig.lineWidth = 8;
@@ -154,6 +208,11 @@ function draw(Sx, Sy, Gx, Gy){
         }
         //117,118へ移動するとき
         else if(Gx == 366){
+            line(Sx,Sy,Gx,Sy);
+            line(Gx,Sy,Gx,Gy);
+        }
+        //一般教室へ移動するとき
+        else if(Gx == 1131){
             line(Sx,Sy,Gx,Sy);
             line(Gx,Sy,Gx,Gy);
         }
@@ -210,6 +269,11 @@ function draw(Sx, Sy, Gx, Gy){
             line(Sx,Sy,Gx,Sy);
             line(Gx,Sy,Gx,Gy);
         }
+        //一般教室へ移動するとき
+        else if(Gx == 1131){
+            line(Sx,Sy,Gx,Sy);
+            line(Gx,Sy,Gx,Gy);
+        }
         //事務室へ移動するとき
         else if(Gy == 300){
             line(Sx,Sy,1182,Sy);
@@ -248,6 +312,11 @@ function draw(Sx, Sy, Gx, Gy){
             line(938,181,938,Gy);
             line(938,Gy,Gx,Gy);
         }
+    }
+    //一般教室から移動するとき
+    else if(Sx == 1131){
+        line(Sx,Sy,Sx,Gy);
+        line(Sx,Gy,Gx,Gy);
     }
     //事務室から移動するとき
     else if(Sy == 300){
