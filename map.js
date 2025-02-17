@@ -200,7 +200,8 @@ function showupG(rn)
 
 function line(Sx,Sy,Gx,Gy){
     if (Sx == Gx && Sy == Gy){
-        Gx = Gx + 10;
+        Sx = Sx - 5;
+        Gx = Gx + 5;
         console.log("同一時処理")
     }
     console.log("描画")
@@ -230,21 +231,26 @@ function draw(Sx, Sy, Gx, Gy){
             line(Sx,Sy,Gx,Gy);
         }
         else if(Gy == 658){
-            if(Sx < 366){
+            if(Sx < 366 && (Sf != 3 && Gf != 3)){
                 line(Sx,Sy,366,Sy);
                 line(366,Sy,366,Gy);
                 line(Gx,Gy,366,Gy);
             }
             else{
-                if(Math.abs(1182 - Sx) + 477 + Math.abs(1182 -Gx) < Math.abs(Sx - 366) + 477 + Math.abs(Gx - 366)){
+                if(Math.abs(1182 - Sx) + 477 + Math.abs(1182 -Gx) > Math.abs(Sx - 366) + 477 + Math.abs(Gx - 366) && (Sf != 3 && Gf != 3)){
+                    line(Sx,Sy,366,Sy);
+                    line(366,Sy,366,Gy);
+                    line(Gx,Gy,366,Gy);
+                }
+                else if(Sf == 0 && Gf == 0){
                     line(Sx,Sy,1182,Sy);
                     line(1182,Sy,1182,Gy);
                     line(Gx,Gy,1182,Gy);
                 }
                 else{
-                    line(Sx,Sy,366,Sy);
-                    line(366,Sy,366,Gy);
-                    line(Gx,Gy,366,Gy);
+                    line(Sx,Sy,1131,Sy);
+                    line(1131,Sy,1131,Gy);
+                    line(Gx,Gy,1131,Gy);
                 }
             }
         }
@@ -283,26 +289,36 @@ function draw(Sx, Sy, Gx, Gy){
             line(Sx,Sy,Gx,Gy);
         }
         else if(Gy == 181){
-            if(Sx < 366){
+            if(Sx < 366 && (Sf != 3 && Gf != 3)){
                 line(Sx,Sy,366,Sy);
                 line(366,Sy,366,Gy);
                 line(Gx,Gy,366,Gy);
             }
-            else if(1182 < Gx){
+            else if(1182 < Gx && (Sf == 0 && Gf == 0)){
                 line(Sx,Sy,1182,Sy);
                 line(1182,Sy,1182,Gy);
                 line(Gx,Gy,1182,Gy);
             }
+            else if(1182 < Gx){
+                line(Sx,Sy,1131,Sy);
+                line(1131,Sy,1131,Gy);
+                line(Gx,Gy,1131,Gy);
+            }
             else{
-                if(Math.abs(1182 - Sx) + 477 + Math.abs(1182 -Gx) < Math.abs(Sx - 366) + 477 + Math.abs(Gx - 366)){
+                if(Math.abs(1182 - Sx) + 477 + Math.abs(1182 -Gx) > Math.abs(Sx - 366) + 477 + Math.abs(Gx - 366) && (Sf != 3 && Gf != 3)){
+                    line(Sx,Sy,366,Sy);
+                    line(366,Sy,366,Gy);
+                    line(Gx,Gy,366,Gy);
+                }
+                else if(Sf == 0 && Gf == 0){
                     line(Sx,Sy,1182,Sy);
                     line(1182,Sy,1182,Gy);
                     line(Gx,Gy,1182,Gy);
                 }
                 else{
-                    line(Sx,Sy,366,Sy);
-                    line(366,Sy,366,Gy);
-                    line(Gx,Gy,366,Gy);
+                    line(Sx,Sy,1131,Sy);
+                    line(1131,Sy,1131,Gy);
+                    line(Gx,Gy,1131,Gy);
                 }
             }
         }

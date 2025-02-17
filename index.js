@@ -179,7 +179,22 @@ function search_route(Snum, Gnum) {
                             Gf = i;
                         }
                     }
-                    console.log(Sx0,Sy0,Gx0,Gy0);
+                    var fn = Sf;
+                    var work = [];
+                    if(Gx0 < Sx0){
+                        work = Gx0;
+                        Gx0 = Sx0;
+                        Sx0 = work;
+
+                        work = Gy0;
+                        Gy0= Sy0;
+                        Sy0 = work;
+
+                        work = Gf;
+                        Gf = Sf;
+                        Sf = work;
+                    }
+                    console.log(Sx0,Sy0,Gx0,Gy0,Sf,Gf);
                     //同じ階で移動するとき
                     if (Sf == Gf) {
                         for (let i = 0; i < 4; i++) {
@@ -202,66 +217,151 @@ function search_route(Snum, Gnum) {
                     }
                     //異なる階で移動するとき
                     else if (fl != 1 || 2 || 3 || 4){
-                        console.log(Math.abs(Sx0 - 341) + Math.abs(Gx0 - 341),Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701))
                         //東棟から移動するとき
                         if(Sy0 == 181){
                             if(Gy0 == Sy0){
-                                if(Math.abs(Sx0 - 341) + Math.abs(Gx0 - 341) > Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701)){
-                                    stairs(Sx0,Gx0,Sf,Gf,701);
-                                    xy(Sy,Sy0);
-                                    xy(Gy,Gy0);
+                                if(Math.abs(Sx0 - 341) + Math.abs(Gx0 - 341) >= Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701)){
+                                    if(Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701) >= Math.abs(Sx0 - 1191) + Math.abs(Gx0 - 1191)){
+                                        stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1191);
+                                    }
+                                    else{
+                                        stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,701);
+                                    }
                                 }
                                 else {
-                                    stairs(Sx0,Gx0,Sf,Gf,341);
-                                    xy(Sy,Sy0);
-                                    xy(Gy,Gy0);
+                                    stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,341);
                                 }
                             }
                             else if(Gy0 == 658){
                                 if(Sx0 < 366){
+                                    stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,341);
                                 }
                                 else{
-                                    if(Math.abs(1182 - Sx) + 477 + Math.abs(1182 -Gx) < Math.abs(Sx - 366) + 477 + Math.abs(Gx - 366)){
+                                    if(Math.abs(1182 - Sx0) + 477 + Math.abs(1182 -Gx0) < Math.abs(Sx0 - 366) + 477 + Math.abs(Gx0 - 366)){
+                                        if(Math.abs(Sx0 - 341) + Math.abs(Gx0 - 341) >= Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701)){
+                                            if(Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701) >= Math.abs(Sx0 - 1191) + Math.abs(Gx0 - 1191)){
 
+                                            }
+                                            else{
+                                                stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,701);
+                                            }
+                                        }
+                                        else{
+                                            stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,341);
+                                        }
                                     }
                                     else{
-
+                                        if(Math.abs(Sx0 - 341) + Math.abs(Gx0 - 341) >= Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701)){
+                                            if(Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701) >= Math.abs(Sx0 - 1191) + Math.abs(Gx0 - 1191)){
+                                                stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1191);
+                                            }
+                                            else{
+                                                stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,701);
+                                            }
+                                        }
+                                        else{
+                                            stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,341);
+                                        }
                                     }
                                 }
                             }
                             //117,118へ移動するとき
                             else if(Gx0 == 366){
-
+                                stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,341);
+                            }
+                            //一般教室へ移動するとき
+                            else if(Gx0 == 1131){
+                                if(Math.abs(Sx0 - 341) + Math.abs(Gx0 - 341) >= Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701)){
+                                    if(Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701) >= Math.abs(Sx0 - 1191) + Math.abs(Gx0 - 1191)){
+                                        stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1191);
+                                    }
+                                    else{
+                                        stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,701);
+                                    }
+                                }
+                                else {
+                                    stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,341);
+                                }
                             }
                             //事務室へ移動するとき
                             else if(Gy0 == 300){
-
+                                if(Math.abs(Sx0 - 341) + Math.abs(Gx0 - 341) >= Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701)){
+                                    if(Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701) >= Math.abs(Sx0 - 1191) + Math.abs(Gx0 - 1191)){
+                                        stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1191);
+                                    }
+                                    else{
+                                        stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,701);
+                                    }
+                                }
+                                else {
+                                    stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,341);
+                                }
                             }
                             //校長室側へ移動するとき
                             else if(Gy0 == 256){
                                 if(Math.abs(938 - Sx) < Math.abs(1182 - Sx)){
-
+                                    if(Math.abs(Sx0 - 341) + Math.abs(Gx0 - 341) >= Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701)){
+                                        if(Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701) >= Math.abs(Sx0 - 1191) + Math.abs(Gx0 - 1191)){
+                                            stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1191);
+                                        }
+                                        else{
+                                            stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,701);
+                                        }
+                                    }
+                                    else{
+                                        stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,341);
+                                    }
                                 }
                                 else{
-
+                                    stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1191);
                                 }
                             }
                         }
                         //西棟から移動するとき
                         else if(Sy0 == 658){
                             if(Gy0 == Sy0){
-
+                                if(Math.abs(Sx0 - 328) + Math.abs(Gx0 - 328) >= Math.abs(Sx0 - 711) + Math.abs(Gx0 - 711)){
+                                    if(Math.abs(Sx0 - 711) + Math.abs(Gx0 - 711) >= Math.abs(Sx0 - 1179) + Math.abs(Gx0 - 1179)){
+                                        stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1179);
+                                    }
+                                    else{
+                                        stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,711);
+                                    }
+                                }
+                                else {
+                                    stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,328);
+                                }
                             }
                             else if(Gy0 == 181){
                                 if(Sx0 < 366){
-
+                                    stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,328);
                                 }
                                 else if(1182 < Gx0){
-
+                                    if(Math.abs(Sx0 - 328) + Math.abs(Gx0 - 328) >= Math.abs(Sx0 - 711) + Math.abs(Gx0 - 711)){
+                                        if(Math.abs(Sx0 - 711) + Math.abs(Gx0 - 711) >= Math.abs(Sx0 - 1179) + Math.abs(Gx0 - 1179)){
+                                            stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1179);
+                                        }
+                                        else{
+                                            stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,711);
+                                        }
+                                    }
+                                    else {
+                                        stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,328);
+                                    }
                                 }
                                 else{
-                                    if(Math.abs(1182 - Sx) + 477 + Math.abs(1182 -Gx) < Math.abs(Sx - 366) + 477 + Math.abs(Gx - 366)){
-
+                                    if(Math.abs(1182 - Sx0) + 477 + Math.abs(1182 -Gx0) < Math.abs(Sx0 - 366) + 477 + Math.abs(Gx0 - 366)){
+                                        if(Math.abs(Sx0 - 328) + Math.abs(Gx0 - 328) >= Math.abs(Sx0 - 711) + Math.abs(Gx0 - 711)){
+                                            if(Math.abs(Sx0 - 711) + Math.abs(Gx0 - 711) >= Math.abs(Sx0 - 1179) + Math.abs(Gx0 - 1179)){
+                                                stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1179);
+                                            }
+                                            else{
+                                                stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,711);
+                                            }
+                                        }
+                                        else {
+                                            stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,328);
+                                        }
                                     }
                                     else{
 
@@ -270,41 +370,148 @@ function search_route(Snum, Gnum) {
                             }
                             //117,118へ移動するとき
                             else if(Gx0 == 366){
-
+                                stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,328);
+                            }
+                            //一般教室へ移動するとき
+                            else if(Gx0 == 1131){
+                                if(Math.abs(Sx0 - 328) + Math.abs(Gx0 - 328) >= Math.abs(Sx0 - 711) + Math.abs(Gx0 - 711)){
+                                    if(Math.abs(Sx0 - 711) + Math.abs(Gx0 - 711) >= Math.abs(Sx0 - 1179) + Math.abs(Gx0 - 1179)){
+                                        stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1179);
+                                    }
+                                    else{
+                                        stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,711);
+                                    }
+                                }
+                                else {
+                                    stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,328);
+                                }
                             }
                             //事務室へ移動するとき
                             else if(Gy0 == 300){
-
+                                if(Math.abs(Sx0 - 328) + Math.abs(Gx0 - 328) >= Math.abs(Sx0 - 711) + Math.abs(Gx0 - 711)){
+                                    if(Math.abs(Sx0 - 711) + Math.abs(Gx0 - 711) >= Math.abs(Sx0 - 1179) + Math.abs(Gx0 - 1179)){
+                                        stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1179);
+                                    }
+                                    else{
+                                        stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,711);
+                                    }
+                                }
+                                else {
+                                    stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,328);
+                                }
                             }
                             //校長室側へ移動するとき
                             else if(Gy0 == 256){
-                                if(Math.abs(366 - Sx) + 572 + Math.abs(Gx - 938) < Math.abs(1182 - Sx) + Math.abs(1182 - Gx)){
-
+                                if(Math.abs(366 - Sx0) + 572 + Math.abs(Gx0 - 938) < Math.abs(1182 - Sx0) + Math.abs(1182 - Gx0)){
+                                    if(Math.abs(Sx0 - 328) + Math.abs(Gx0 - 328) >= Math.abs(Sx0 - 711) + Math.abs(Gx0 - 711)){
+                                        if(Math.abs(Sx0 - 711) + Math.abs(Gx0 - 711) >= Math.abs(Sx0 - 1179) + Math.abs(Gx0 - 1179)){
+                                            stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1179);
+                                        }
+                                        else{
+                                            stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,711);
+                                        }
+                                    }
+                                    else {
+                                        stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,328);
+                                    }
                                 }
                                 else{
-
+                                    stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1179);
                                 }
                             }
                         }
                         //117,118から移動するとき
                         else if(Sx0 == 366){
-                            if(Gy0 == 300){
-
-                            }
-                            else if(Gy0 != 256){
-
+                            if(Gy0 != 256){
+                                if(Math.abs(Sx0 - 341) + Math.abs(Gx0 - 341) >= Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701)){
+                                    if(Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701) >= Math.abs(Sx0 - 1191) + Math.abs(Gx0 - 1191)){
+                                        if(Math.abs(Sx0 - 328) + Math.abs(Gx0 - 328) >= Math.abs(Sx0 - 711) + Math.abs(Gx0 - 711)){
+                                            if(Math.abs(Sx0 - 711) + Math.abs(Gx0 - 711) >= Math.abs(Sx0 - 1179) + Math.abs(Gx0 - 1179)){
+                                                stairs2(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1179);
+                                            }
+                                            else{
+                                                stairs2(Sx0,Sy0,Gx0,Gy0,Sf,Gf,711);
+                                            }
+                                        }
+                                        else {
+                                            stairs2(Sx0,Sy0,Gx0,Gy0,Sf,Gf,328);
+                                        }
+                                        stairs2(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1191);
+                                    }
+                                    else{
+                                        stairs2(Sx0,Sy0,Gx0,Gy0,Sf,Gf,701);
+                                    }
+                                }
+                                else {
+                                    stairs2(Sx0,Sy0,Gx0,Gy0,Sf,Gf,341);
+                                }
                             }
                             else{
-
+                                if(Math.abs(Sx0 - 341) + Math.abs(Gx0 - 341) >= Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701)){
+                                    if(Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701) >= Math.abs(Sx0 - 1191) + Math.abs(Gx0 - 1191)){
+                                        stairs2(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1191);
+                                    }
+                                    else{
+                                        stairs2(Sx0,Sy0,Gx0,Gy0,Sf,Gf,701);
+                                    }
+                                }
+                                else {
+                                    stairs2(Sx0,Sy0,Gx0,Gy0,Sf,Gf,341);
+                                }
+                            }
+                        }
+                        //一般教室から移動するとき
+                        else if(Sx0 == 1131){
+                            if(Math.abs(Sx0 - 341) + Math.abs(Gx0 - 341) >= Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701)){
+                                if(Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701) >= Math.abs(Sx0 - 1191) + Math.abs(Gx0 - 1191)){
+                                    if(Math.abs(Sx0 - 328) + Math.abs(Gx0 - 328) >= Math.abs(Sx0 - 711) + Math.abs(Gx0 - 711)){
+                                        if(Math.abs(Sx0 - 711) + Math.abs(Gx0 - 711) >= Math.abs(Sx0 - 1179) + Math.abs(Gx0 - 1179)){
+                                            stairs2(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1179);
+                                        }
+                                        else{
+                                            stairs2(Sx0,Sy0,Gx0,Gy0,Sf,Gf,711);
+                                        }
+                                    }
+                                    else {
+                                        stairs2(Sx0,Sy0,Gx0,Gy0,Sf,Gf,328);
+                                    }
+                                    stairs2(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1191);
+                                }
+                                else{
+                                    stairs2(Sx0,Sy0,Gx0,Gy0,Sf,Gf,701);
+                                }
+                            }
+                            else {
+                                stairs2(Sx0,Sy0,Gx0,Gy0,Sf,Gf,341);
                             }
                         }
                         //事務室から移動するとき
                         else if(Sy0 == 300){
-
+                            if(Math.abs(Sx0 - 341) + Math.abs(Gx0 - 341) >= Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701)){
+                                if(Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701) >= Math.abs(Sx0 - 1191) + Math.abs(Gx0 - 1191)){
+                                    stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1191);
+                                }
+                                else{
+                                    stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,701);
+                                }
+                            }
+                            else {
+                                stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,341);
+                            }
                         }
                         //校長室側から移動するとき
                         else if(Sy0 == 256){
-
+                            if(Math.abs(Sx0 - 341) + Math.abs(Gx0 - 341) >= Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701)){
+                                if(Math.abs(Sx0 - 701) + Math.abs(Gx0 - 701) >= Math.abs(Sx0 - 1191) + Math.abs(Gx0 - 1191)){
+                                    stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,1191);
+                                }
+                                else{
+                                    stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,701);
+                                }
+                            }
+                            else {
+                                stairs(Sx0,Sy0,Gx0,Gy0,Sf,Gf,341);
+                            }
                         }
                     }
                     map.contentWindow.download(Sx,Sy,Gx,Gy,Sf,Gf);
@@ -312,40 +519,111 @@ function search_route(Snum, Gnum) {
                     map.contentWindow.showupS(Snum);
                     map.contentWindow.Groom = Gnum;
                     map.contentWindow.showupG(Gnum);
-                    map.contentWindow.flchange(Sf);
+                    map.contentWindow.flchange(fn);
                     dis_number.textContent = Snum[0] + "F";
                     dis_number.style.background=colors[Snum[0] - 1];
                 }
             }
         }
     }
-    for (let i = 0; i < 4; i++){
-        console.log((i+1) + "番目" + Sx[i],Sy[i],Gx[i],Gy[i]);
-    }
 }
 
-function stairs(x1,x2,Sn,Gn,stairs){
+//階段時の挙動
+function stairs(x1,y1,x2,y2,Sf,Gf,stairs){
+    for (let i = 0; i < 4; i++){
+        if (Gf == Sf){
+            Gy[i] = y2;
+        }
+        else{
+            Gy[i] = y1;
+        }
+    }
+    for (let i = 0; i < 4; i++){
+        Sy[i] = y1;
+    }    
     for (let i = 0; i < 4; i++){
         if (Sf == i){
             for (let j = 0; j < 4; j++){
                 if (Gf == j){
                     Gx[j] = x2;
+                    Gy[j] = y2;
                 }
                 else {
                     Gx[j] = stairs;
                 }
             }
             Sx[i] = x1;
+            Sy[i] = y1;
         }
         else {
             Sx[i] = stairs;
         }
     }
+    console.log("階段")
 }
-
-function xy(list,data){
+//階段例外用1
+function stairs2(x1,y1,x2,y2,Sf,Gf,stairs){
     for (let i = 0; i < 4; i++){
-        list[i] = data;
+        if (Gf == Sf){
+            Gy[i] = y1;
+        }
+        else{
+            Gy[i] = 181;
+        }
     }
+    for (let i = 0; i < 4; i++){
+        Sy[i] = 181;
+    }    
+    for (let i = 0; i < 4; i++){
+        if (Sf == i){
+            for (let j = 0; j < 4; j++){
+                if (Gf == j){
+                    Gx[j] = x2;
+                    Gy[j] = y2;
+                }
+                else {
+                    Gx[j] = stairs;
+                }
+            }
+            Sx[i] = x1;
+            Sy[i] = y1;
+        }
+        else {
+            Sx[i] = stairs;
+        }
+    }
+    console.log("階段")
 }
-
+//階段例外用2
+function stairs3(x1,y1,x2,y2,Sf,Gf,stairs){
+    for (let i = 0; i < 4; i++){
+        if (Gf == Sf){
+            Gy[i] = y1;
+        }
+        else{
+            Gy[i] = y2;
+        }
+    }
+    for (let i = 0; i < 4; i++){
+        Sy[i] = y2;
+    }    
+    for (let i = 0; i < 4; i++){
+        if (Sf == i){
+            for (let j = 0; j < 4; j++){
+                if (Gf == j){
+                    Gx[j] = x2;
+                    Gy[j] = y2;
+                }
+                else {
+                    Gx[j] = stairs;
+                }
+            }
+            Sx[i] = x1;
+            Sy[i] = y1;
+        }
+        else {
+            Sx[i] = stairs;
+        }
+    }
+    console.log("階段")
+}
